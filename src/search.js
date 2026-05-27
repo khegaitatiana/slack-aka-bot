@@ -56,6 +56,7 @@ function findPeople(query) {
     const position = (emp.position || '').toLowerCase();
     const location = (emp.location || '').toLowerCase();
     const dept = (emp.department || '').toLowerCase();
+    const teams = (emp.teams || []).join(' ').toLowerCase();
     const slackDisplay = (emp.slackDisplayName || '').toLowerCase();
     const slackRealName = (emp.slackRealName || '').toLowerCase();
     const slackTitle = (emp.slackTitle || '').toLowerCase();
@@ -85,6 +86,7 @@ function findPeople(query) {
       else if (matchWord(surname, token)) nameScore += 3;
       else if (matchWord(position, token)) refineScore += 2;
       else if (matchWord(slackTitle, token)) refineScore += 2;
+      else if (matchWord(teams, token)) refineScore += 2;
       else if (matchWord(location, token)) refineScore += 2;
       else if (matchWord(dept, token)) refineScore += 1;
       else { allTokensMatched = false; break; }

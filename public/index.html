@@ -162,7 +162,8 @@
       }
       statusEl.textContent = `${count} ${count === 1 ? 'person' : 'people'} found`;
       resultsEl.innerHTML = results.map(r => {
-        const metaParts = [r.position, r.department, r.location, r.timezone].filter(Boolean);
+        const teamLabel = r.teams?.length ? `Team: ${r.teams.join(', ')}` : '';
+        const metaParts = [r.position, r.department, teamLabel, r.location, r.timezone].filter(Boolean);
         const slackLink = r.slackProfileUrl
           ? `<a class="slack-btn" href="${escapeHtml(r.slackProfileUrl)}" target="_blank" rel="noopener">Open in Slack →</a>`
           : `<span class="slack-btn disabled">No Slack profile</span>`;

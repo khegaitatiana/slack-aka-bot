@@ -27,6 +27,7 @@ function handleSearch(url, res) {
     position: emp.position,
     department: emp.department,
     location: emp.location,
+    teams: emp.teams || [],
     timezone: emp.timezone,
     email: emp.email,
     slackId: emp.slackHandle || null,

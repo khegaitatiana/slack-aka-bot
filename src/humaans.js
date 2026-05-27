@@ -86,6 +86,7 @@ async function syncHumaans() {
           slackLastName: slack?.lastName || '',
           slackTitle: slack?.title || '',
           slackImage: slack?.image || '',
+          teams: (p.teams || []).map(t => t.name).filter(Boolean),
           email: p.email || '',
         };
       });
