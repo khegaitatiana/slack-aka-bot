@@ -4,8 +4,10 @@
   "description": "Slack bot to find people by nickname",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node src/server.js",
+    "bot": "node src/index.js",
+    "dev": "nodemon src/server.js",
+    "search": "node src/cli.js"
   },
   "dependencies": {
     "@slack/bolt": "^3.16.0",

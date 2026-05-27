@@ -33,18 +33,13 @@ function loadNicknames() {
   }
 }
 
-async function searchPerson(query) {
+function findPeople(query) {
   const nicknames = loadNicknames();
   const employees = getEmployees();
   const tokens = query.toLowerCase().split(/\s+/).filter(t => t);
+  if (!tokens.length) return { matches: [], nicknames };
 
-  if (!tokens.length) {
-    return '❌ Please provide a search query.';
-  }
-
-  let matches = [];
-
-  // Search each employee
+  const matches = [];
   for (const emp of employees) {
     const firstName = (emp.firstName || '').toLowerCase();
     const surname = (emp.surname || '').toLowerCase();
@@ -54,8 +49,6 @@ async function searchPerson(query) {
     const empNicknames = (nicknames[emp.firstName] || []).map(n => n.toLowerCase());
 
     let score = 0;
-
-    // Score each token
     for (const token of tokens) {
       if (firstName.includes(token)) score += 5;
       else if (empNicknames.some(nick => nick.includes(token))) score += 4;
@@ -65,23 +58,21 @@ async function searchPerson(query) {
       else if (dept.includes(token)) score += 1;
     }
 
-    if (score > 0) {
-      matches.push({ emp, score });
-    }
-  }
-
-  if (!matches.length) {
-    return `❌ No one found matching "${query}".`;
+    if (score > 0) matches.push({ emp, score });
   }
 
   matches.sort((a, b) => b.score - a.score);
+  return { matches, nicknames };
+}
 
-  // Single match
-  if (matches.length === 1) {
-    return formatCard(matches[0].emp, nicknames);
-  }
+async function searchPerson(query) {
+  const { matches, nicknames } = findPeople(query);
 
-  // Multiple matches — return all
+  if (!query.trim()) return '❌ Please provide a search query.';
+  if (!matches.length) return `❌ No one found matching "${query}".`;
+
+  if (matches.length === 1) return formatCard(matches[0].emp, nicknames);
+
   let response = `Found ${matches.length} people:\n\n`;
   matches.forEach((m, i) => {
     const e = m.emp;
@@ -117,4 +108,4 @@ function formatCard(emp, nicknames) {
   return card;
 }
 
-module.exports = { searchPerson };
+module.exports = { searchPerson, findPeople };

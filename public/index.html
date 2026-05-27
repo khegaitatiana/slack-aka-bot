@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aka — find a colleague</title>
+  <style>
+    :root {
+      --bg: #f7f7f8;
+      --card-bg: #ffffff;
+      --text: #1d1c1d;
+      --muted: #616061;
+      --border: #e8e8e9;
+      --accent: #4a154b;
+      --accent-hover: #350d36;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+    h1 {
+      font-size: 28px;
+      margin: 0 0 4px;
+      font-weight: 700;
+    }
+    .subtitle { color: var(--muted); margin: 0 0 24px; font-size: 14px; }
+    .search-box {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--card-bg);
+      color: var(--text);
+      outline: none;
+      transition: border-color 120ms;
+    }
+    .search-box input:focus { border-color: var(--accent); }
+    .status {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 16px;
+      min-height: 18px;
+    }
+    .results { display: flex; flex-direction: column; gap: 12px; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .card .name { font-weight: 600; font-size: 16px; }
+    .card .meta { color: var(--muted); font-size: 14px; margin-top: 2px; }
+    .card .nicks {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .slack-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background-color 120ms;
+    }
+    .slack-btn:hover { background: var(--accent-hover); }
+    .slack-btn.disabled {
+      background: #e8e8e9;
+      color: #888;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .empty {
+      color: var(--muted);
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>aka</h1>
+    <p class="subtitle">Find a colleague by nickname, name, role, or location.</p>
+
+    <div class="search-box">
+      <input
+        id="query"
+        type="text"
+        placeholder="Try: Sasha designer, Misha iOS Yerevan, Volodya"
+        autocomplete="off"
+        autofocus
+      />
+    </div>
+
+    <div class="status" id="status"></div>
+    <div class="results" id="results"></div>
+  </div>
+
+  <script>
+    const input = document.getElementById('query');
+    const statusEl = document.getElementById('status');
+    const resultsEl = document.getElementById('results');
+
+    let debounceTimer;
+    let lastQuery = '';
+
+    function escapeHtml(s) {
+      return String(s ?? '').replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[c]));
+    }
+
+    function renderResults(data) {
+      const { query, count, results } = data;
+      if (!query) {
+        statusEl.textContent = '';
+        resultsEl.innerHTML = '';
+        return;
+      }
+      if (count === 0) {
+        statusEl.textContent = '';
+        resultsEl.innerHTML = `<div class="empty">No one found matching "${escapeHtml(query)}".</div>`;
+        return;
+      }
+      statusEl.textContent = `${count} ${count === 1 ? 'person' : 'people'} found`;
+      resultsEl.innerHTML = results.map(r => {
+        const metaParts = [r.position, r.department, r.location, r.timezone].filter(Boolean);
+        const nicksLine = r.nicknames?.length
+          ? `<div class="nicks">Also known as: ${escapeHtml(r.nicknames.join(', '))}</div>`
+          : '';
+        const slackLink = r.slackProfileUrl
+          ? `<a class="slack-btn" href="${escapeHtml(r.slackProfileUrl)}" target="_blank" rel="noopener">Open in Slack →</a>`
+          : `<span class="slack-btn disabled">No Slack profile</span>`;
+        return `
+          <div class="card">
+            <div>
+              <div class="name">${escapeHtml(r.fullName)}</div>
+              <div class="meta">${escapeHtml(metaParts.join(' · '))}</div>
+              ${nicksLine}
+            </div>
+            ${slackLink}
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function search(q) {
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+        const data = await res.json();
+        if (data.query === lastQuery) renderResults(data);
+      } catch (err) {
+        statusEl.textContent = 'Search failed: ' + err.message;
+      }
+    }
+
+    input.addEventListener('input', () => {
+      const q = input.value.trim();
+      lastQuery = q;
+      clearTimeout(debounceTimer);
+      if (!q) {
+        renderResults({ query: '', count: 0, results: [] });
+        return;
+      }
+      statusEl.textContent = 'Searching…';
+      debounceTimer = setTimeout(() => search(q), 150);
+    });
+  </script>
+</body>
+</html>
