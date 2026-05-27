@@ -1,0 +1,21 @@
+{
+  "name": "aka-slack-bot",
+  "version": "1.0.0",
+  "description": "Slack bot to find people by nickname",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "@slack/bolt": "^3.16.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
