@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { syncSlackUsers, getSlackId } = require('./slack-users');
 
 const BASE_URL = 'https://app.humaans.io/api';
 const PAGE_SIZE = 250;
@@ -57,6 +58,9 @@ async function syncHumaans() {
       fetchAll('/people'),
       fetchAll('/job-roles'),
       fetchAll('/locations'),
+      syncSlackUsers().catch(err => {
+        console.error('⚠️  Slack users sync failed:', err.data?.error || err.message);
+      }),
     ]);
 
     const rolesByPerson = pickCurrentRoles(jobRoles);
@@ -74,7 +78,7 @@ async function syncHumaans() {
           department: role?.department || '',
           location: buildLocation(p, locationsById),
           timezone: p.timezone || p.remoteTimezone || '',
-          slackHandle: p.email?.split('@')[0] || '',
+          slackHandle: getSlackId(p.email) || '',
           email: p.email || '',
         };
       });
