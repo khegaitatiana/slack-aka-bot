@@ -1,35 +1,87 @@
 const axios = require('axios');
 
+const BASE_URL = 'https://app.humaans.io/api';
+const PAGE_SIZE = 250;
+
 let employees = [];
+
+function client() {
+  return axios.create({
+    baseURL: BASE_URL,
+    headers: { Authorization: `Bearer ${process.env.HUMAANS_API_KEY}` },
+  });
+}
+
+async function fetchAll(path) {
+  const http = client();
+  const all = [];
+  let skip = 0;
+  while (true) {
+    const { data } = await http.get(path, { params: { $limit: PAGE_SIZE, $skip: skip } });
+    const page = data.data || [];
+    all.push(...page);
+    if (page.length < PAGE_SIZE) break;
+    skip += PAGE_SIZE;
+  }
+  return all;
+}
+
+function pickCurrentRoles(jobRoles) {
+  const today = new Date().toISOString().slice(0, 10);
+  const byPerson = new Map();
+  for (const r of jobRoles) {
+    if (r.effectiveDate && r.effectiveDate > today) continue;
+    const existing = byPerson.get(r.personId);
+    if (!existing || (r.effectiveDate || '') > (existing.effectiveDate || '')) {
+      byPerson.set(r.personId, r);
+    }
+  }
+  return byPerson;
+}
+
+function buildLocation(person, locationsById) {
+  if (person.locationId === 'remote' || !person.locationId) {
+    const parts = [person.remoteCity, person.remoteCountry].filter(Boolean);
+    return parts.length ? `${parts.join(', ')} (remote)` : '';
+  }
+  const loc = locationsById.get(person.locationId);
+  if (!loc) return '';
+  return loc.displayName || loc.label || [loc.city, loc.country].filter(Boolean).join(', ');
+}
 
 async function syncHumaans() {
   try {
     console.log('🔄 Syncing Humaans...');
 
-    const response = await axios.get('https://api.humaans.io/v1/employees', {
-      headers: {
-        Authorization: `Bearer ${process.env.HUMAANS_API_KEY}`,
-        'Organization-Id': process.env.HUMAANS_ORG_ID,
-      },
-    });
+    const [people, jobRoles, locations] = await Promise.all([
+      fetchAll('/people'),
+      fetchAll('/job-roles'),
+      fetchAll('/locations'),
+    ]);
 
-    employees = response.data
-      .filter(emp => emp.status === 'active')
-      .map(emp => ({
-        id: emp.id,
-        firstName: emp.firstName || '',
-        surname: emp.surname || '',
-        position: emp.jobTitle || emp.role || '',
-        department: emp.department?.name || '',
-        location: emp.workLocation?.name || emp.location || '',
-        timezone: emp.timezone || '',
-        slackHandle: emp.slackId || emp.email?.split('@')[0] || '',
-        email: emp.email || '',
-      }));
+    const rolesByPerson = pickCurrentRoles(jobRoles);
+    const locationsById = new Map(locations.map(l => [l.id, l]));
+
+    employees = people
+      .filter(p => p.status === 'active')
+      .map(p => {
+        const role = rolesByPerson.get(p.id);
+        return {
+          id: p.id,
+          firstName: p.preferredName || p.firstName || '',
+          surname: p.lastName || '',
+          position: role?.jobTitle || '',
+          department: role?.department || '',
+          location: buildLocation(p, locationsById),
+          timezone: p.timezone || p.remoteTimezone || '',
+          slackHandle: p.email?.split('@')[0] || '',
+          email: p.email || '',
+        };
+      });
 
     console.log(`✅ Synced ${employees.length} employees`);
   } catch (error) {
-    console.error('❌ Humaans sync failed:', error.message);
+    console.error('❌ Humaans sync failed:', error.response?.status, error.message);
   }
 }
 
