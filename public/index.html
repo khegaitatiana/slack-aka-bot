@@ -6,131 +6,289 @@
   <title>aka — find a colleague</title>
   <style>
     :root {
-      --bg: #f7f7f8;
-      --card-bg: #ffffff;
-      --text: #1d1c1d;
-      --muted: #616061;
-      --border: #e8e8e9;
-      --accent: #4a154b;
-      --accent-hover: #350d36;
+      --bg: #fbf9f6;
+      --card: #ffffff;
+      --text: #1c1917;
+      --muted: #78716c;
+      --faint: #a8a29e;
+      --border: #f0ebe5;
+      --accent: #4f46e5;
+      --accent-soft: #eef2ff;
+      --accent-hover: #4338ca;
+      --shadow-sm: 0 1px 2px rgba(28, 25, 23, 0.04);
+      --shadow-md: 0 4px 16px rgba(28, 25, 23, 0.06), 0 1px 3px rgba(28, 25, 23, 0.05);
+      --shadow-lg: 0 8px 24px rgba(28, 25, 23, 0.08), 0 2px 4px rgba(28, 25, 23, 0.05);
+      --radius: 16px;
+      --radius-sm: 10px;
     }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #16140f;
+        --card: #1f1c17;
+        --text: #f5f0e8;
+        --muted: #a8a29e;
+        --faint: #6e6760;
+        --border: #2a261f;
+        --accent: #818cf8;
+        --accent-soft: #1e1b3a;
+        --accent-hover: #a5b4fc;
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+    }
+
     * { box-sizing: border-box; }
-    body {
+
+    html, body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 0;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.45;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
     }
-    .container { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 24px 120px;
+    }
+
+    header {
+      margin-bottom: 36px;
+    }
     h1 {
-      font-size: 28px;
-      margin: 0 0 4px;
+      font-size: 36px;
       font-weight: 700;
+      letter-spacing: -0.025em;
+      margin: 0 0 8px;
+      color: var(--text);
     }
-    .subtitle { color: var(--muted); margin: 0 0 24px; font-size: 14px; }
-    .search-box {
-      position: relative;
-      margin-bottom: 24px;
-    }
-    .search-box input {
-      width: 100%;
-      padding: 14px 18px;
+    .tagline {
       font-size: 16px;
+      color: var(--muted);
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .search-wrap {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--faint);
+      pointer-events: none;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 18px 22px 18px 52px;
+      font-size: 16px;
+      font-family: inherit;
+      font-weight: 400;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--card-bg);
+      border-radius: var(--radius);
+      background: var(--card);
       color: var(--text);
       outline: none;
-      transition: border-color 120ms;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 160ms ease, box-shadow 160ms ease;
     }
-    .search-box input:focus { border-color: var(--accent); }
+    .search-wrap input::placeholder {
+      color: var(--faint);
+    }
+    .search-wrap input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
     .status {
-      color: var(--muted);
       font-size: 13px;
-      margin-bottom: 16px;
+      color: var(--muted);
+      margin: 0 0 16px 4px;
       min-height: 18px;
+      font-weight: 500;
     }
-    .results { display: flex; flex-direction: column; gap: 12px; }
+
+    .results {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
     .card {
-      background: var(--card-bg);
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 18px;
+      border-radius: var(--radius);
+      padding: 20px 22px;
       display: grid;
-      grid-template-columns: 48px 1fr auto;
-      gap: 14px;
+      grid-template-columns: 64px 1fr auto;
+      gap: 18px;
       align-items: center;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 160ms ease, transform 160ms ease, border-color 160ms ease;
     }
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: color-mix(in srgb, var(--accent) 25%, var(--border));
+      transform: translateY(-1px);
+    }
+
     .avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
-      object-fit: cover;
-      background: #eaeaec;
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #888;
       font-weight: 600;
-      font-size: 18px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
       flex-shrink: 0;
       overflow: hidden;
+      color: #fff;
+      box-shadow: 0 0 0 2px var(--card), 0 0 0 3px var(--border);
     }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .card .name { font-weight: 600; font-size: 16px; }
-    .card .meta { color: var(--muted); font-size: 14px; margin-top: 2px; }
-    .card .nicks {
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .body { min-width: 0; }
+    .name {
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin: 0 0 4px;
+    }
+    .position {
+      font-size: 14px;
+      color: var(--text);
+      margin: 0 0 6px;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+    }
+    .meta {
+      font-size: 13px;
       color: var(--muted);
-      font-size: 12px;
-      margin-top: 4px;
-      font-style: italic;
+      letter-spacing: -0.005em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
     }
+    .meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .meta .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--faint);
+      display: inline-block;
+    }
+
     .slack-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 14px;
+      padding: 9px 14px;
       background: var(--accent);
       color: #fff;
-      border-radius: 6px;
+      border-radius: 8px;
       text-decoration: none;
       font-size: 13px;
       font-weight: 500;
+      letter-spacing: -0.005em;
       white-space: nowrap;
-      transition: background-color 120ms;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 1px 2px rgba(28, 25, 23, 0.12);
+      transition: background-color 140ms ease, box-shadow 140ms ease;
     }
-    .slack-btn:hover { background: var(--accent-hover); }
+    .slack-btn:hover {
+      background: var(--accent-hover);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 2px 4px rgba(28, 25, 23, 0.14);
+    }
+    .slack-btn:active {
+      box-shadow:
+        inset 0 1px 1px rgba(0, 0, 0, 0.15),
+        0 1px 1px rgba(28, 25, 23, 0.08);
+    }
+    .slack-btn .arrow {
+      display: inline-flex;
+      transition: transform 140ms ease;
+    }
+    .slack-btn:hover .arrow { transform: translateX(2px); }
     .slack-btn.disabled {
-      background: #e8e8e9;
-      color: #888;
-      cursor: not-allowed;
+      background: transparent;
+      color: var(--faint);
+      border: 1px solid var(--border);
+      box-shadow: none;
+      cursor: default;
       pointer-events: none;
+      padding: 8px 13px;
     }
+    @media (prefers-color-scheme: dark) {
+      .slack-btn { color: var(--bg); }
+      .slack-btn:hover { color: var(--bg); }
+    }
+
     .empty {
       color: var(--muted);
       text-align: center;
-      padding: 40px 20px;
+      padding: 48px 20px;
       font-size: 14px;
+    }
+    .empty strong { color: var(--text); font-weight: 600; }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(4px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .card { animation: fade-in 200ms cubic-bezier(.2,.7,.3,1) both; }
+
+    @media (max-width: 520px) {
+      .container { padding: 40px 16px 80px; }
+      h1 { font-size: 30px; }
+      .card { grid-template-columns: 52px 1fr; padding: 16px 18px; }
+      .avatar { width: 52px; height: 52px; font-size: 18px; }
+      .slack-btn { grid-column: 1 / -1; justify-content: center; margin-top: 4px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>aka</h1>
-    <p class="subtitle">Find a colleague by nickname, name, role, or location.</p>
+    <header>
+      <h1>aka</h1>
+      <p class="tagline">Find a colleague by name, nickname, role, team, or location.</p>
+    </header>
 
-    <div class="search-box">
+    <div class="search-wrap">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
       <input
         id="query"
         type="text"
-        placeholder="Try: Sasha designer, Misha iOS Yerevan, Volodya"
+        placeholder="Sasha designer · Misha iOS · Volodya"
         autocomplete="off"
+        spellcheck="false"
         autofocus
       />
     </div>
 
-    <div class="status" id="status"></div>
+    <p class="status" id="status"></p>
     <div class="results" id="results"></div>
   </div>
 
@@ -148,6 +306,14 @@
       }[c]));
     }
 
+    // Deterministic warm hue from a name → consistent avatar background.
+    function avatarColor(name) {
+      let h = 0;
+      for (const c of name || '?') h = (h * 31 + c.charCodeAt(0)) >>> 0;
+      const hue = h % 360;
+      return `hsl(${hue}, 55%, 55%)`;
+    }
+
     function renderResults(data) {
       const { query, count, results } = data;
       if (!query) {
@@ -157,29 +323,41 @@
       }
       if (count === 0) {
         statusEl.textContent = '';
-        resultsEl.innerHTML = `<div class="empty">No one found matching "${escapeHtml(query)}".</div>`;
+        resultsEl.innerHTML = `<div class="empty">No one found matching <strong>“${escapeHtml(query)}”</strong>.</div>`;
         return;
       }
-      statusEl.textContent = `${count} ${count === 1 ? 'person' : 'people'} found`;
+      statusEl.textContent = `${count} ${count === 1 ? 'result' : 'results'} for “${query}”`;
       resultsEl.innerHTML = results.map(r => {
-        const teamLabel = r.teams?.length ? `Team: ${r.teams.join(', ')}` : '';
-        const metaParts = [r.position, r.department, teamLabel, r.location, r.timezone].filter(Boolean);
-        const slackLink = r.slackProfileUrl
-          ? `<a class="slack-btn" href="${escapeHtml(r.slackProfileUrl)}" target="_blank" rel="noopener">Open in Slack →</a>`
-          : `<span class="slack-btn disabled">No Slack profile</span>`;
-        const initial = (r.firstName || r.fullName || '?').trim().charAt(0).toUpperCase();
+        const initials = (r.firstName?.[0] || '') + (r.surname?.[0] || '');
+        const color = avatarColor(r.fullName);
         const avatar = r.photoUrl
-          ? `<div class="avatar"><img src="${escapeHtml(r.photoUrl)}" alt="" loading="lazy" onerror="this.parentNode.textContent='${escapeHtml(initial)}'"></div>`
-          : `<div class="avatar">${escapeHtml(initial)}</div>`;
+          ? `<div class="avatar" style="background:${color}"><img src="${escapeHtml(r.photoUrl)}" alt="" loading="lazy" onerror="this.remove()"></div>`
+          : `<div class="avatar" style="background:${color}">${escapeHtml(initials.toUpperCase() || '?')}</div>`;
+
+        const metaItems = [];
+        if (r.department) metaItems.push(r.department);
+        if (r.teams?.length) metaItems.push(r.teams.join(', '));
+        if (r.location) metaItems.push(r.location);
+        if (r.timezone) metaItems.push(r.timezone);
+        const meta = metaItems
+          .map((m, i) => (i === 0 ? '' : '<span class="dot"></span>') + `<span>${escapeHtml(m)}</span>`)
+          .join('');
+
+        const arrowSvg = '<svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+        const slackBtn = r.slackProfileUrl
+          ? `<a class="slack-btn" href="${escapeHtml(r.slackProfileUrl)}" target="_blank" rel="noopener">Open in Slack ${arrowSvg}</a>`
+          : `<span class="slack-btn disabled">Not in Slack</span>`;
+
         return `
-          <div class="card">
+          <article class="card">
             ${avatar}
-            <div>
-              <div class="name">${escapeHtml(r.fullName)}</div>
-              <div class="meta">${escapeHtml(metaParts.join(' · '))}</div>
+            <div class="body">
+              <h2 class="name">${escapeHtml(r.fullName)}</h2>
+              ${r.position ? `<p class="position">${escapeHtml(r.position)}</p>` : ''}
+              <div class="meta">${meta}</div>
             </div>
-            ${slackLink}
-          </div>
+            ${slackBtn}
+          </article>
         `;
       }).join('');
     }
@@ -190,7 +368,7 @@
         const data = await res.json();
         if (data.query === lastQuery) renderResults(data);
       } catch (err) {
-        statusEl.textContent = 'Search failed: ' + err.message;
+        statusEl.textContent = 'Search failed';
       }
     }
 
@@ -203,7 +381,15 @@
         return;
       }
       statusEl.textContent = 'Searching…';
-      debounceTimer = setTimeout(() => search(q), 150);
+      debounceTimer = setTimeout(() => search(q), 120);
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === '/' && document.activeElement !== input) {
+        e.preventDefault();
+        input.focus();
+        input.select();
+      }
     });
   </script>
 </body>
