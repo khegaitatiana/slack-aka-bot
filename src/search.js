@@ -59,7 +59,20 @@ function findPeople(query) {
     const slackDisplay = (emp.slackDisplayName || '').toLowerCase();
     const slackRealName = (emp.slackRealName || '').toLowerCase();
     const slackTitle = (emp.slackTitle || '').toLowerCase();
-    const empNicknames = (nicknames[emp.firstName] || []).map(n => n.toLowerCase());
+    // Look up nicknames using every plausible "formal first name" we have:
+    // Humaans firstName, Slack first_name, and the first word of real_name.
+    // Catches cases like Humaans "Dima" + Slack "Dmitrii" → Mitya is a known
+    // nickname for Dmitrii.
+    const candidateKeys = new Set();
+    if (emp.firstName) candidateKeys.add(emp.firstName);
+    if (emp.slackFirstName) candidateKeys.add(emp.slackFirstName);
+    const realFirst = (emp.slackRealName || '').split(/\s+/)[0];
+    if (realFirst) candidateKeys.add(realFirst);
+
+    const empNicknames = [];
+    for (const key of candidateKeys) {
+      if (nicknames[key]) empNicknames.push(...nicknames[key].map(n => n.toLowerCase()));
+    }
 
     let nameScore = 0;
     let refineScore = 0;

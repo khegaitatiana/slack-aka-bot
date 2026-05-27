@@ -14,7 +14,10 @@ function buildMap(members) {
       id: u.id,
       displayName: p.display_name || '',
       realName: p.real_name || '',
+      firstName: p.first_name || '',
+      lastName: p.last_name || '',
       title: p.title || '',
+      image: p.image_original || p.image_512 || p.image_192 || p.image_72 || '',
     });
   }
   return map;

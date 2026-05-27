@@ -82,7 +82,10 @@ async function syncHumaans() {
           slackHandle: slack?.id || '',
           slackDisplayName: slack?.displayName || '',
           slackRealName: slack?.realName || '',
+          slackFirstName: slack?.firstName || '',
+          slackLastName: slack?.lastName || '',
           slackTitle: slack?.title || '',
+          slackImage: slack?.image || '',
           email: p.email || '',
         };
       });

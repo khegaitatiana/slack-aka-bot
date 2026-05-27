@@ -31,6 +31,7 @@ function handleSearch(url, res) {
     email: emp.email,
     slackId: emp.slackHandle || null,
     slackProfileUrl: emp.slackHandle ? `https://${WORKSPACE}.slack.com/team/${emp.slackHandle}` : null,
+    photoUrl: emp.slackImage || null,
     nicknames: nicknames[emp.firstName] || [],
     score,
   }));

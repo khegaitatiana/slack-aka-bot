@@ -56,12 +56,28 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 16px 18px;
+      padding: 14px 18px;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
+      grid-template-columns: 48px 1fr auto;
+      gap: 14px;
       align-items: center;
     }
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #eaeaec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-weight: 600;
+      font-size: 18px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .card .name { font-weight: 600; font-size: 16px; }
     .card .meta { color: var(--muted); font-size: 14px; margin-top: 2px; }
     .card .nicks {
@@ -150,8 +166,13 @@
         const slackLink = r.slackProfileUrl
           ? `<a class="slack-btn" href="${escapeHtml(r.slackProfileUrl)}" target="_blank" rel="noopener">Open in Slack →</a>`
           : `<span class="slack-btn disabled">No Slack profile</span>`;
+        const initial = (r.firstName || r.fullName || '?').trim().charAt(0).toUpperCase();
+        const avatar = r.photoUrl
+          ? `<div class="avatar"><img src="${escapeHtml(r.photoUrl)}" alt="" loading="lazy" onerror="this.parentNode.textContent='${escapeHtml(initial)}'"></div>`
+          : `<div class="avatar">${escapeHtml(initial)}</div>`;
         return `
           <div class="card">
+            ${avatar}
             <div>
               <div class="name">${escapeHtml(r.fullName)}</div>
               <div class="meta">${escapeHtml(metaParts.join(' · '))}</div>

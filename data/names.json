@@ -126,6 +126,7 @@
   ],
   "Dmitriy": [
     "Dmitri",
+    "Dmitrii",
     "Dmytro",
     "Dimitri",
     "Dima",
@@ -143,6 +144,25 @@
   ],
   "Dmitri": [
     "Dmitriy",
+    "Dmitrii",
+    "Dmytro",
+    "Dimitri",
+    "Dima",
+    "Dimka",
+    "Dimochka",
+    "Dimulya",
+    "Dimon",
+    "Dimas",
+    "Dimych",
+    "Mitya",
+    "Mitka",
+    "Mityai",
+    "Mit",
+    "Mytko"
+  ],
+  "Dmitrii": [
+    "Dmitriy",
+    "Dmitri",
     "Dmytro",
     "Dimitri",
     "Dima",
@@ -161,6 +181,7 @@
   "Dmytro": [
     "Dmitriy",
     "Dmitri",
+    "Dmitrii",
     "Dimitri",
     "Dima",
     "Dimka",
@@ -178,6 +199,7 @@
   "Dimitri": [
     "Dmitriy",
     "Dmitri",
+    "Dmitrii",
     "Dmytro",
     "Dima",
     "Dimka",
@@ -842,24 +864,8 @@
     "Yurets",
     "Yuran"
   ],
-  "Igor": [
-    "Ihor",
-    "Igoryok",
-    "Igorek",
-    "Igoryosha",
-    "Garik",
-    "Gosha",
-    "Iggy"
-  ],
-  "Ihor": [
-    "Igor",
-    "Igoryok",
-    "Igorek",
-    "Igoryosha",
-    "Garik",
-    "Gosha",
-    "Iggy"
-  ],
+  "Igor": ["Ihor", "Igoryok", "Igorek", "Igoryosha", "Garik", "Gosha", "Iggy"],
+  "Ihor": ["Igor", "Igoryok", "Igorek", "Igoryosha", "Garik", "Gosha", "Iggy"],
   "Konstantin": [
     "Kostyantyn",
     "Kostya",
@@ -922,22 +928,8 @@
     "Maksyusha",
     "Maximka"
   ],
-  "Roman": [
-    "Roma",
-    "Romka",
-    "Romik",
-    "Romochka",
-    "Romych",
-    "Romashka"
-  ],
-  "Anton": [
-    "Antosha",
-    "Antonchik",
-    "Antokha",
-    "Tosha",
-    "Toha",
-    "Toni"
-  ],
+  "Roman": ["Roma", "Romka", "Romik", "Romochka", "Romych", "Romashka"],
+  "Anton": ["Antosha", "Antonchik", "Antokha", "Tosha", "Toha", "Toni"],
   "Boris": [
     "Borys",
     "Borya",
@@ -1216,15 +1208,7 @@
     "Fedyok",
     "Theo"
   ],
-  "Leonid": [
-    "Lyonya",
-    "Ljonja",
-    "Lyonka",
-    "Lyokha",
-    "Lenya",
-    "Leo",
-    "Leon"
-  ],
+  "Leonid": ["Lyonya", "Ljonja", "Lyonka", "Lyokha", "Lenya", "Leo", "Leon"],
   "Artyom": [
     "Artem",
     "Artiom",
@@ -1960,14 +1944,7 @@
     "Anica",
     "Anči"
   ],
-  "Polina": [
-    "Polya",
-    "Polja",
-    "Polka",
-    "Polinka",
-    "Polinochka",
-    "Pol"
-  ],
+  "Polina": ["Polya", "Polja", "Polka", "Polinka", "Polinochka", "Pol"],
   "Veronika": [
     "Veronica",
     "Weronika",
@@ -1995,20 +1972,8 @@
     "Veroshka",
     "Roni"
   ],
-  "Vera": [
-    "Wira",
-    "Verochka",
-    "Verka",
-    "Verunya",
-    "Verusha"
-  ],
-  "Wira": [
-    "Vera",
-    "Verochka",
-    "Verka",
-    "Verunya",
-    "Verusha"
-  ],
+  "Vera": ["Wira", "Verochka", "Verka", "Verunya", "Verusha"],
+  "Wira": ["Vera", "Verochka", "Verka", "Verunya", "Verusha"],
   "Lyudmila": [
     "Ludmila",
     "Ludmyla",
@@ -2095,52 +2060,12 @@
     "Tina",
     "Val"
   ],
-  "Larisa": [
-    "Larissa",
-    "Lara",
-    "Larka",
-    "Larochka",
-    "Lora",
-    "Lariska"
-  ],
-  "Larissa": [
-    "Larisa",
-    "Lara",
-    "Larka",
-    "Larochka",
-    "Lora",
-    "Lariska"
-  ],
-  "Marina": [
-    "Maryna",
-    "Marisha",
-    "Mara",
-    "Mariska",
-    "Marinka",
-    "Marishka"
-  ],
-  "Maryna": [
-    "Marina",
-    "Marisha",
-    "Mara",
-    "Mariska",
-    "Marinka",
-    "Marishka"
-  ],
-  "Tamara": [
-    "Toma",
-    "Tomka",
-    "Tamarka",
-    "Tomochka"
-  ],
-  "Lyubov": [
-    "Lyuba",
-    "Ljuba",
-    "Lyubasha",
-    "Lyubochka",
-    "Lyubka",
-    "Luba"
-  ],
+  "Larisa": ["Larissa", "Lara", "Larka", "Larochka", "Lora", "Lariska"],
+  "Larissa": ["Larisa", "Lara", "Larka", "Larochka", "Lora", "Lariska"],
+  "Marina": ["Maryna", "Marisha", "Mara", "Mariska", "Marinka", "Marishka"],
+  "Maryna": ["Marina", "Marisha", "Mara", "Mariska", "Marinka", "Marishka"],
+  "Tamara": ["Toma", "Tomka", "Tamarka", "Tomochka"],
+  "Lyubov": ["Lyuba", "Ljuba", "Lyubasha", "Lyubochka", "Lyubka", "Luba"],
   "Nadezhda": [
     "Nadia",
     "Nadiya",
@@ -2693,77 +2618,15 @@
     "Matyusha",
     "Mot"
   ],
-  "Nazar": [
-    "Nazariy",
-    "Nazariusz",
-    "Naz",
-    "Nazarchik",
-    "Nazarko",
-    "Nazarka"
-  ],
-  "Nazariy": [
-    "Nazar",
-    "Nazariusz",
-    "Naz",
-    "Nazarchik",
-    "Nazarko",
-    "Nazarka"
-  ],
-  "Nazariusz": [
-    "Nazar",
-    "Nazariy",
-    "Naz",
-    "Nazarchik",
-    "Nazarko",
-    "Nazarka"
-  ],
-  "Oleg": [
-    "Oleh",
-    "Olezha",
-    "Olezhka",
-    "Olezhek",
-    "Olechek",
-    "Lega"
-  ],
-  "Oleh": [
-    "Oleg",
-    "Olezha",
-    "Olezhka",
-    "Olezhek",
-    "Olechek",
-    "Lega"
-  ],
-  "Rostislav": [
-    "Rostyslav",
-    "Roscislaw",
-    "Rost",
-    "Rostik",
-    "Rostya",
-    "Slava"
-  ],
-  "Rostyslav": [
-    "Rostislav",
-    "Roscislaw",
-    "Rost",
-    "Rostik",
-    "Rostya",
-    "Slava"
-  ],
-  "Roscislaw": [
-    "Rostislav",
-    "Rostyslav",
-    "Rost",
-    "Rostik",
-    "Rostya",
-    "Slava"
-  ],
-  "Ruslan": [
-    "Rusya",
-    "Rusja",
-    "Ruslik",
-    "Ruska",
-    "Ruslanchik"
-  ],
+  "Nazar": ["Nazariy", "Nazariusz", "Naz", "Nazarchik", "Nazarko", "Nazarka"],
+  "Nazariy": ["Nazar", "Nazariusz", "Naz", "Nazarchik", "Nazarko", "Nazarka"],
+  "Nazariusz": ["Nazar", "Nazariy", "Naz", "Nazarchik", "Nazarko", "Nazarka"],
+  "Oleg": ["Oleh", "Olezha", "Olezhka", "Olezhek", "Olechek", "Lega"],
+  "Oleh": ["Oleg", "Olezha", "Olezhka", "Olezhek", "Olechek", "Lega"],
+  "Rostislav": ["Rostyslav", "Roscislaw", "Rost", "Rostik", "Rostya", "Slava"],
+  "Rostyslav": ["Rostislav", "Roscislaw", "Rost", "Rostik", "Rostya", "Slava"],
+  "Roscislaw": ["Rostislav", "Rostyslav", "Rost", "Rostik", "Rostya", "Slava"],
+  "Ruslan": ["Rusya", "Rusja", "Ruslik", "Ruska", "Ruslanchik"],
   "Semyon": [
     "Semen",
     "Symeon",
@@ -2852,11 +2715,7 @@
     "Stipe",
     "Stipica"
   ],
-  "Taras": [
-    "Tarasik",
-    "Tarasko",
-    "Tarko"
-  ],
+  "Taras": ["Tarasik", "Tarasko", "Tarko"],
   "Timofey": [
     "Tymofiy",
     "Timofei",
@@ -2893,30 +2752,9 @@
     "Timoshka",
     "Tim"
   ],
-  "Timur": [
-    "Tymur",
-    "Temur",
-    "Timka",
-    "Timusha",
-    "Timurchik",
-    "Tem"
-  ],
-  "Tymur": [
-    "Timur",
-    "Temur",
-    "Timka",
-    "Timusha",
-    "Timurchik",
-    "Tem"
-  ],
-  "Temur": [
-    "Timur",
-    "Tymur",
-    "Timka",
-    "Timusha",
-    "Timurchik",
-    "Tem"
-  ],
+  "Timur": ["Tymur", "Temur", "Timka", "Timusha", "Timurchik", "Tem"],
+  "Tymur": ["Timur", "Temur", "Timka", "Timusha", "Timurchik", "Tem"],
+  "Temur": ["Timur", "Tymur", "Timka", "Timusha", "Timurchik", "Tem"],
   "Valery": [
     "Valeri",
     "Valeriy",
@@ -2957,12 +2795,7 @@
     "Valerik",
     "Valyok"
   ],
-  "Vsevolod": [
-    "Seva",
-    "Sevochka",
-    "Vsevolodik",
-    "Vseva"
-  ],
+  "Vsevolod": ["Seva", "Sevochka", "Vsevolodik", "Vseva"],
   "Daniil": [
     "Danylo",
     "Daniel",
@@ -3050,20 +2883,8 @@
     "Egorushka",
     "Zhorik"
   ],
-  "Nikita": [
-    "Mykyta",
-    "Nikitka",
-    "Kit",
-    "Nikitos",
-    "Nika"
-  ],
-  "Mykyta": [
-    "Nikita",
-    "Nikitka",
-    "Kit",
-    "Nikitos",
-    "Nika"
-  ],
+  "Nikita": ["Mykyta", "Nikitka", "Kit", "Nikitos", "Nika"],
+  "Mykyta": ["Nikita", "Nikitka", "Kit", "Nikitos", "Nika"],
   "Vladislav": [
     "Wladyslaw",
     "Wlodzislaw",
@@ -3136,152 +2957,26 @@
     "Lyo",
     "Lavče"
   ],
-  "Mark": [
-    "Marko",
-    "Marek",
-    "Markusha",
-    "Markushka",
-    "Marik"
-  ],
-  "Marko": [
-    "Mark",
-    "Marek",
-    "Markusha",
-    "Markushka",
-    "Marik"
-  ],
-  "Marek": [
-    "Mark",
-    "Marko",
-    "Markusha",
-    "Markushka",
-    "Marik"
-  ],
-  "Arkadi": [
-    "Arkadiy",
-    "Arkady",
-    "Arkadiusz",
-    "Arkasha",
-    "Arkash",
-    "Kadya"
-  ],
-  "Arkadiy": [
-    "Arkadi",
-    "Arkady",
-    "Arkadiusz",
-    "Arkasha",
-    "Arkash",
-    "Kadya"
-  ],
-  "Arkady": [
-    "Arkadi",
-    "Arkadiy",
-    "Arkadiusz",
-    "Arkasha",
-    "Arkash",
-    "Kadya"
-  ],
-  "Arkadiusz": [
-    "Arkadi",
-    "Arkadiy",
-    "Arkady",
-    "Arkasha",
-    "Arkash",
-    "Kadya"
-  ],
-  "Alina": [
-    "Alyna",
-    "Alya",
-    "Alja",
-    "Alinka",
-    "Alinochka",
-    "Alyusha",
-    "Lina"
-  ],
-  "Alyna": [
-    "Alina",
-    "Alya",
-    "Alja",
-    "Alinka",
-    "Alinochka",
-    "Alyusha",
-    "Lina"
-  ],
-  "Alisa": [
-    "Alice",
-    "Alisia",
-    "Alisochka",
-    "Lisa",
-    "Alis"
-  ],
-  "Alice": [
-    "Alisa",
-    "Alisia",
-    "Alisochka",
-    "Lisa",
-    "Alis"
-  ],
-  "Alisia": [
-    "Alisa",
-    "Alice",
-    "Alisochka",
-    "Lisa",
-    "Alis"
-  ],
-  "Antonina": [
-    "Tonya",
-    "Tonja",
-    "Tonechka",
-    "Toska",
-    "Antoninka"
-  ],
-  "Diana": [
-    "Dijana",
-    "Dianka",
-    "Di",
-    "Dia",
-    "Dianochka",
-    "Dianushka"
-  ],
-  "Dijana": [
-    "Diana",
-    "Dianka",
-    "Di",
-    "Dia",
-    "Dianochka",
-    "Dianushka"
-  ],
-  "Inna": [
-    "Innochka",
-    "Inka",
-    "Inushka"
-  ],
-  "Karina": [
-    "Karyna",
-    "Karinka",
-    "Kara",
-    "Karinochka",
-    "Kari"
-  ],
-  "Karyna": [
-    "Karina",
-    "Karinka",
-    "Kara",
-    "Karinochka",
-    "Kari"
-  ],
-  "Kira": [
-    "Kyra",
-    "Kirochka",
-    "Kirka",
-    "Kirusha"
-  ],
-  "Kyra": [
-    "Kira",
-    "Kirochka",
-    "Kirka",
-    "Kirusha"
-  ],
+  "Mark": ["Marko", "Marek", "Markusha", "Markushka", "Marik"],
+  "Marko": ["Mark", "Marek", "Markusha", "Markushka", "Marik"],
+  "Marek": ["Mark", "Marko", "Markusha", "Markushka", "Marik"],
+  "Arkadi": ["Arkadiy", "Arkady", "Arkadiusz", "Arkasha", "Arkash", "Kadya"],
+  "Arkadiy": ["Arkadi", "Arkady", "Arkadiusz", "Arkasha", "Arkash", "Kadya"],
+  "Arkady": ["Arkadi", "Arkadiy", "Arkadiusz", "Arkasha", "Arkash", "Kadya"],
+  "Arkadiusz": ["Arkadi", "Arkadiy", "Arkady", "Arkasha", "Arkash", "Kadya"],
+  "Alina": ["Alyna", "Alya", "Alja", "Alinka", "Alinochka", "Alyusha", "Lina"],
+  "Alyna": ["Alina", "Alya", "Alja", "Alinka", "Alinochka", "Alyusha", "Lina"],
+  "Alisa": ["Alice", "Alisia", "Alisochka", "Lisa", "Alis"],
+  "Alice": ["Alisa", "Alisia", "Alisochka", "Lisa", "Alis"],
+  "Alisia": ["Alisa", "Alice", "Alisochka", "Lisa", "Alis"],
+  "Antonina": ["Tonya", "Tonja", "Tonechka", "Toska", "Antoninka"],
+  "Diana": ["Dijana", "Dianka", "Di", "Dia", "Dianochka", "Dianushka"],
+  "Dijana": ["Diana", "Dianka", "Di", "Dia", "Dianochka", "Dianushka"],
+  "Inna": ["Innochka", "Inka", "Inushka"],
+  "Karina": ["Karyna", "Karinka", "Kara", "Karinochka", "Kari"],
+  "Karyna": ["Karina", "Karinka", "Kara", "Karinochka", "Kari"],
+  "Kira": ["Kyra", "Kirochka", "Kirka", "Kirusha"],
+  "Kyra": ["Kira", "Kirochka", "Kirka", "Kirusha"],
   "Kristina": [
     "Krystyna",
     "Christina",
@@ -3443,36 +3138,11 @@
     "Margosha",
     "Ritochka"
   ],
-  "Milana": [
-    "Milena",
-    "Mila",
-    "Lana",
-    "Milanka",
-    "Milochka"
-  ],
-  "Milena": [
-    "Milana",
-    "Mila",
-    "Lana",
-    "Milanka",
-    "Milochka"
-  ],
-  "Nina": [
-    "Ninochka",
-    "Ninka",
-    "Nyusha"
-  ],
-  "Raisa": [
-    "Raya",
-    "Raja",
-    "Raechka",
-    "Raika"
-  ],
-  "Renata": [
-    "Rena",
-    "Renatka",
-    "Renochka"
-  ],
+  "Milana": ["Milena", "Mila", "Lana", "Milanka", "Milochka"],
+  "Milena": ["Milana", "Mila", "Lana", "Milanka", "Milochka"],
+  "Nina": ["Ninochka", "Ninka", "Nyusha"],
+  "Raisa": ["Raya", "Raja", "Raechka", "Raika"],
+  "Renata": ["Rena", "Renatka", "Renochka"],
   "Taisia": [
     "Taisiya",
     "Taisya",
@@ -3503,46 +3173,11 @@
     "Taichka",
     "Tasi"
   ],
-  "Ulyana": [
-    "Uliana",
-    "Ulya",
-    "Ulja",
-    "Ulka",
-    "Ulyanka",
-    "Ulyanochka"
-  ],
-  "Uliana": [
-    "Ulyana",
-    "Ulya",
-    "Ulja",
-    "Ulka",
-    "Ulyanka",
-    "Ulyanochka"
-  ],
-  "Valeria": [
-    "Valeriya",
-    "Walerie",
-    "Lera",
-    "Lerka",
-    "Lerochka",
-    "Valerika"
-  ],
-  "Valeriya": [
-    "Valeria",
-    "Walerie",
-    "Lera",
-    "Lerka",
-    "Lerochka",
-    "Valerika"
-  ],
-  "Walerie": [
-    "Valeria",
-    "Valeriya",
-    "Lera",
-    "Lerka",
-    "Lerochka",
-    "Valerika"
-  ],
+  "Ulyana": ["Uliana", "Ulya", "Ulja", "Ulka", "Ulyanka", "Ulyanochka"],
+  "Uliana": ["Ulyana", "Ulya", "Ulja", "Ulka", "Ulyanka", "Ulyanochka"],
+  "Valeria": ["Valeriya", "Walerie", "Lera", "Lerka", "Lerochka", "Valerika"],
+  "Valeriya": ["Valeria", "Walerie", "Lera", "Lerka", "Lerochka", "Valerika"],
+  "Walerie": ["Valeria", "Valeriya", "Lera", "Lerka", "Lerochka", "Valerika"],
   "Varvara": [
     "Barbara",
     "Warwara",
@@ -3570,81 +3205,16 @@
     "Varvarushka",
     "Barb"
   ],
-  "Yana": [
-    "Jana",
-    "Iana",
-    "Yanka",
-    "Janka",
-    "Yanochka",
-    "Yanushka"
-  ],
-  "Jana": [
-    "Yana",
-    "Iana",
-    "Yanka",
-    "Janka",
-    "Yanochka",
-    "Yanushka"
-  ],
-  "Iana": [
-    "Yana",
-    "Jana",
-    "Yanka",
-    "Janka",
-    "Yanochka",
-    "Yanushka"
-  ],
-  "Yaroslava": [
-    "Iaroslava",
-    "Jaroslava",
-    "Yara",
-    "Yarka",
-    "Slavka"
-  ],
-  "Iaroslava": [
-    "Yaroslava",
-    "Jaroslava",
-    "Yara",
-    "Yarka",
-    "Slavka"
-  ],
-  "Jaroslava": [
-    "Yaroslava",
-    "Iaroslava",
-    "Yara",
-    "Yarka",
-    "Slavka"
-  ],
-  "Zhanna": [
-    "Zhanetta",
-    "Jeanne",
-    "Zhanka",
-    "Žanka",
-    "Zhanochka",
-    "Zhanusha"
-  ],
-  "Zhanetta": [
-    "Zhanna",
-    "Jeanne",
-    "Zhanka",
-    "Žanka",
-    "Zhanochka",
-    "Zhanusha"
-  ],
-  "Jeanne": [
-    "Zhanna",
-    "Zhanetta",
-    "Zhanka",
-    "Žanka",
-    "Zhanochka",
-    "Zhanusha"
-  ],
-  "Zinaida": [
-    "Zina",
-    "Zinochka",
-    "Zinka",
-    "Zinusha"
-  ],
+  "Yana": ["Jana", "Iana", "Yanka", "Janka", "Yanochka", "Yanushka"],
+  "Jana": ["Yana", "Iana", "Yanka", "Janka", "Yanochka", "Yanushka"],
+  "Iana": ["Yana", "Jana", "Yanka", "Janka", "Yanochka", "Yanushka"],
+  "Yaroslava": ["Iaroslava", "Jaroslava", "Yara", "Yarka", "Slavka"],
+  "Iaroslava": ["Yaroslava", "Jaroslava", "Yara", "Yarka", "Slavka"],
+  "Jaroslava": ["Yaroslava", "Iaroslava", "Yara", "Yarka", "Slavka"],
+  "Zhanna": ["Zhanetta", "Jeanne", "Zhanka", "Žanka", "Zhanochka", "Zhanusha"],
+  "Zhanetta": ["Zhanna", "Jeanne", "Zhanka", "Žanka", "Zhanochka", "Zhanusha"],
+  "Jeanne": ["Zhanna", "Zhanetta", "Zhanka", "Žanka", "Zhanochka", "Zhanusha"],
+  "Zinaida": ["Zina", "Zinochka", "Zinka", "Zinusha"],
   "Stefania": [
     "Stephania",
     "Stefana",
@@ -3681,237 +3251,45 @@
     "Stefusha",
     "Steka"
   ],
-  "Snezhana": [
-    "Snizhana",
-    "Snežana",
-    "Snezha",
-    "Snežа",
-    "Snezhka",
-    "Snizhka"
-  ],
-  "Snizhana": [
-    "Snezhana",
-    "Snežana",
-    "Snezha",
-    "Snežа",
-    "Snezhka",
-    "Snizhka"
-  ],
-  "Snežana": [
-    "Snezhana",
-    "Snizhana",
-    "Snezha",
-    "Snežа",
-    "Snezhka",
-    "Snizhka"
-  ],
-  "Dragan": [
-    "Drago",
-    "Drače",
-    "Gane",
-    "Dragiša",
-    "Dragan_ko"
-  ],
-  "Dragana": [
-    "Gaga",
-    "Dragica",
-    "Draga",
-    "Dada"
-  ],
-  "Goran": [
-    "Goki",
-    "Gogo",
-    "Gole",
-    "Gorance"
-  ],
-  "Zoran": [
-    "Zoki",
-    "Zole",
-    "Zokica",
-    "Zorance"
-  ],
-  "Zorana": [
-    "Zorka",
-    "Zoka",
-    "Zorica"
-  ],
-  "Zorka": [
-    "Zorana",
-    "Zoka",
-    "Zorica"
-  ],
-  "Milan": [
-    "Mile",
-    "Mića",
-    "Milance",
-    "Milanko"
-  ],
-  "Nemanja": [
-    "Nema",
-    "Nemo",
-    "Manja",
-    "Neša"
-  ],
-  "Tomislav": [
-    "Toma",
-    "Tomo",
-    "Slavko",
-    "Tomče",
-    "Tomica"
-  ],
-  "Mladen": [
-    "Mlado",
-    "Mladko",
-    "Mlađa",
-    "Mlađo"
-  ],
-  "Dejan": [
-    "Deki",
-    "Dejo",
-    "Dejance",
-    "Dejč"
-  ],
-  "Đorđe": [
-    "Djordje",
-    "Gjorgi",
-    "Đoka",
-    "Đole",
-    "Đorđo",
-    "Djoka"
-  ],
-  "Djordje": [
-    "Đorđe",
-    "Gjorgi",
-    "Đoka",
-    "Đole",
-    "Đorđo",
-    "Djoka"
-  ],
-  "Gjorgi": [
-    "Đorđe",
-    "Djordje",
-    "Đoka",
-    "Đole",
-    "Đorđo",
-    "Djoka"
-  ],
-  "Branko": [
-    "Brane",
-    "Branković",
-    "Branča",
-    "Bane"
-  ],
-  "Branka": [
-    "Brana",
-    "Brankica",
-    "Brane"
-  ],
-  "Vedran": [
-    "Veki",
-    "Vedo",
-    "Vedrance"
-  ],
-  "Ognjen": [
-    "Ogi",
-    "Ognjenko"
-  ],
-  "Ivana": [
-    "Iwana",
-    "Iva",
-    "Ivka",
-    "Ivuška",
-    "Ivanka",
-    "Ivina"
-  ],
-  "Iwana": [
-    "Ivana",
-    "Iva",
-    "Ivka",
-    "Ivuška",
-    "Ivanka",
-    "Ivina"
-  ],
-  "Sandra": [
-    "Sanda",
-    "Sandi",
-    "Sandrica",
-    "Sanđa"
-  ],
-  "Sanda": [
-    "Sandra",
-    "Sandi",
-    "Sandrica",
-    "Sanđa"
-  ],
-  "Sanja": [
-    "Sanjica",
-    "Sanca",
-    "Sajka"
-  ],
-  "Maja": [
-    "Majcica",
-    "Maca",
-    "Majcić"
-  ],
-  "Mirjana": [
-    "Mira",
-    "Mirka",
-    "Miki",
-    "Mirica"
-  ],
-  "Jasna": [
-    "Jaca",
-    "Jasnica"
-  ],
-  "Edin": [
-    "Eki",
-    "Edo",
-    "Edinčić"
-  ],
-  "Adnan": [
-    "Adi",
-    "Ado",
-    "Adnanović"
-  ],
-  "Emir": [
-    "Emi",
-    "Emo",
-    "Emirče"
-  ],
-  "Haris": [
-    "Haki",
-    "Hari",
-    "Hare"
-  ],
-  "Lejla": [
-    "Leki",
-    "Lela",
-    "Lejlica"
-  ],
-  "Selma": [
-    "Sela",
-    "Selka",
-    "Selmica"
-  ],
-  "Emina": [
-    "Emka",
-    "Emi",
-    "Eminica",
-    "Mina"
-  ],
-  "Amra": [
-    "Ami",
-    "Amrica",
-    "Amka"
-  ],
-  "Azra": [
-    "Aza",
-    "Azrica"
-  ],
-  "Belma": [
-    "Beba",
-    "Belmica"
-  ],
+  "Snezhana": ["Snizhana", "Snežana", "Snezha", "Snežа", "Snezhka", "Snizhka"],
+  "Snizhana": ["Snezhana", "Snežana", "Snezha", "Snežа", "Snezhka", "Snizhka"],
+  "Snežana": ["Snezhana", "Snizhana", "Snezha", "Snežа", "Snezhka", "Snizhka"],
+  "Dragan": ["Drago", "Drače", "Gane", "Dragiša", "Dragan_ko"],
+  "Dragana": ["Gaga", "Dragica", "Draga", "Dada"],
+  "Goran": ["Goki", "Gogo", "Gole", "Gorance"],
+  "Zoran": ["Zoki", "Zole", "Zokica", "Zorance"],
+  "Zorana": ["Zorka", "Zoka", "Zorica"],
+  "Zorka": ["Zorana", "Zoka", "Zorica"],
+  "Milan": ["Mile", "Mića", "Milance", "Milanko"],
+  "Nemanja": ["Nema", "Nemo", "Manja", "Neša"],
+  "Tomislav": ["Toma", "Tomo", "Slavko", "Tomče", "Tomica"],
+  "Mladen": ["Mlado", "Mladko", "Mlađa", "Mlađo"],
+  "Dejan": ["Deki", "Dejo", "Dejance", "Dejč"],
+  "Đorđe": ["Djordje", "Gjorgi", "Đoka", "Đole", "Đorđo", "Djoka"],
+  "Djordje": ["Đorđe", "Gjorgi", "Đoka", "Đole", "Đorđo", "Djoka"],
+  "Gjorgi": ["Đorđe", "Djordje", "Đoka", "Đole", "Đorđo", "Djoka"],
+  "Branko": ["Brane", "Branković", "Branča", "Bane"],
+  "Branka": ["Brana", "Brankica", "Brane"],
+  "Vedran": ["Veki", "Vedo", "Vedrance"],
+  "Ognjen": ["Ogi", "Ognjenko"],
+  "Ivana": ["Iwana", "Iva", "Ivka", "Ivuška", "Ivanka", "Ivina"],
+  "Iwana": ["Ivana", "Iva", "Ivka", "Ivuška", "Ivanka", "Ivina"],
+  "Sandra": ["Sanda", "Sandi", "Sandrica", "Sanđa"],
+  "Sanda": ["Sandra", "Sandi", "Sandrica", "Sanđa"],
+  "Sanja": ["Sanjica", "Sanca", "Sajka"],
+  "Maja": ["Majcica", "Maca", "Majcić"],
+  "Mirjana": ["Mira", "Mirka", "Miki", "Mirica"],
+  "Jasna": ["Jaca", "Jasnica"],
+  "Edin": ["Eki", "Edo", "Edinčić"],
+  "Adnan": ["Adi", "Ado", "Adnanović"],
+  "Emir": ["Emi", "Emo", "Emirče"],
+  "Haris": ["Haki", "Hari", "Hare"],
+  "Lejla": ["Leki", "Lela", "Lejlica"],
+  "Selma": ["Sela", "Selka", "Selmica"],
+  "Emina": ["Emka", "Emi", "Eminica", "Mina"],
+  "Amra": ["Ami", "Amrica", "Amka"],
+  "Azra": ["Aza", "Azrica"],
+  "Belma": ["Beba", "Belmica"],
   "Ingrid": [
     "Ingryda",
     "Inga",
@@ -3921,7 +3299,8 @@
     "Ingie",
     "Indi",
     "Ingridka",
-    "Ingriduška"
+    "Ingriduška",
+    "Ingridushka"
   ],
   "Ingryda": [
     "Ingrid",
@@ -3932,6 +3311,7 @@
     "Ingie",
     "Indi",
     "Ingridka",
-    "Ingriduška"
+    "Ingriduška",
+    "Ingridushka"
   ]
 }
