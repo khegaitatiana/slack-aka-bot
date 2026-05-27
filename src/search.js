@@ -57,8 +57,8 @@ async function searchPerson(query) {
 
     // Score each token
     for (const token of tokens) {
-      if (empNicknames.some(nick => nick.includes(token))) score += 5;
-      else if (firstName.includes(token)) score += 4;
+      if (firstName.includes(token)) score += 5;
+      else if (empNicknames.some(nick => nick.includes(token))) score += 4;
       else if (surname.includes(token)) score += 3;
       else if (position.includes(token)) score += 2;
       else if (location.includes(token)) score += 2;
@@ -75,22 +75,20 @@ async function searchPerson(query) {
   }
 
   matches.sort((a, b) => b.score - a.score);
-  const top = matches.slice(0, 3);
 
   // Single match
-  if (top.length === 1) {
-    return formatCard(top[0].emp, nicknames);
+  if (matches.length === 1) {
+    return formatCard(matches[0].emp, nicknames);
   }
 
-  // Multiple matches
-  let response = `Found ${top.length} people:\n\n`;
-  top.forEach((m, i) => {
+  // Multiple matches — return all
+  let response = `Found ${matches.length} people:\n\n`;
+  matches.forEach((m, i) => {
     const e = m.emp;
     response += `${i + 1}. *${e.firstName} ${e.surname}* — ${e.position}, ${e.location}`;
     if (e.slackHandle) response += ` <@${e.slackHandle}>`;
     response += '\n';
   });
-  response += '\n💡 Try adding more details to narrow down.';
   return response;
 }
 
