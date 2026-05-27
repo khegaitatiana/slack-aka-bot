@@ -33,6 +33,16 @@ function loadNicknames() {
   }
 }
 
+// Match a token against a field at word-boundary level: token must be a
+// prefix of some word in the field. Prevents "stefan" matching "estefany".
+function matchWord(field, token) {
+  if (!field) return false;
+  for (const word of field.split(/[\s._\-,/()]+/)) {
+    if (word && word.startsWith(token)) return true;
+  }
+  return false;
+}
+
 function findPeople(query) {
   const nicknames = loadNicknames();
   const employees = getEmployees();
@@ -46,19 +56,31 @@ function findPeople(query) {
     const position = (emp.position || '').toLowerCase();
     const location = (emp.location || '').toLowerCase();
     const dept = (emp.department || '').toLowerCase();
+    const slackDisplay = (emp.slackDisplayName || '').toLowerCase();
+    const slackRealName = (emp.slackRealName || '').toLowerCase();
+    const slackTitle = (emp.slackTitle || '').toLowerCase();
     const empNicknames = (nicknames[emp.firstName] || []).map(n => n.toLowerCase());
 
-    let score = 0;
+    let nameScore = 0;
+    let refineScore = 0;
+    let allTokensMatched = true;
     for (const token of tokens) {
-      if (firstName.includes(token)) score += 5;
-      else if (empNicknames.some(nick => nick.includes(token))) score += 4;
-      else if (surname.includes(token)) score += 3;
-      else if (position.includes(token)) score += 2;
-      else if (location.includes(token)) score += 2;
-      else if (dept.includes(token)) score += 1;
+      if (matchWord(firstName, token)) nameScore += 5;
+      else if (empNicknames.some(nick => nick.startsWith(token))) nameScore += 4;
+      else if (matchWord(slackDisplay, token)) nameScore += 4;
+      else if (matchWord(slackRealName, token)) nameScore += 4;
+      else if (matchWord(surname, token)) nameScore += 3;
+      else if (matchWord(position, token)) refineScore += 2;
+      else if (matchWord(slackTitle, token)) refineScore += 2;
+      else if (matchWord(location, token)) refineScore += 2;
+      else if (matchWord(dept, token)) refineScore += 1;
+      else { allTokensMatched = false; break; }
     }
 
-    if (score > 0) matches.push({ emp, score });
+    // Every token must match somewhere AND at least one must be a name match.
+    if (allTokensMatched && nameScore > 0) {
+      matches.push({ emp, score: nameScore + refineScore });
+    }
   }
 
   matches.sort((a, b) => b.score - a.score);

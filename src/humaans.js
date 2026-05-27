@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { syncSlackUsers, getSlackId } = require('./slack-users');
+const { syncSlackUsers, getSlackProfile } = require('./slack-users');
 
 const BASE_URL = 'https://app.humaans.io/api';
 const PAGE_SIZE = 250;
@@ -70,6 +70,7 @@ async function syncHumaans() {
       .filter(p => p.status === 'active')
       .map(p => {
         const role = rolesByPerson.get(p.id);
+        const slack = getSlackProfile(p.email);
         return {
           id: p.id,
           firstName: p.preferredName || p.firstName || '',
@@ -78,7 +79,10 @@ async function syncHumaans() {
           department: role?.department || '',
           location: buildLocation(p, locationsById),
           timezone: p.timezone || p.remoteTimezone || '',
-          slackHandle: getSlackId(p.email) || '',
+          slackHandle: slack?.id || '',
+          slackDisplayName: slack?.displayName || '',
+          slackRealName: slack?.realName || '',
+          slackTitle: slack?.title || '',
           email: p.email || '',
         };
       });

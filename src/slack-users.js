@@ -1,14 +1,21 @@
 const fs = require('fs');
 const { WebClient } = require('@slack/web-api');
 
-let emailToId = new Map();
+let emailToProfile = new Map();
 
 function buildMap(members) {
   const map = new Map();
   for (const u of members || []) {
     if (u.deleted || u.is_bot || u.id === 'USLACKBOT') continue;
-    const email = u.profile?.email;
-    if (email) map.set(email.toLowerCase(), u.id);
+    const p = u.profile || {};
+    const email = p.email;
+    if (!email) continue;
+    map.set(email.toLowerCase(), {
+      id: u.id,
+      displayName: p.display_name || '',
+      realName: p.real_name || '',
+      title: p.title || '',
+    });
   }
   return map;
 }
@@ -48,24 +55,28 @@ async function loadFromApi() {
 async function syncSlackUsers() {
   const filePath = process.env.SLACK_USERS_FILE || './data/slack_users.json';
   if (fs.existsSync(filePath)) {
-    emailToId = loadFromFile(filePath);
-    console.log(`✅ Loaded ${emailToId.size} Slack users from ${filePath}`);
-    return emailToId;
+    emailToProfile = loadFromFile(filePath);
+    console.log(`✅ Loaded ${emailToProfile.size} Slack users from ${filePath}`);
+    return emailToProfile;
   }
 
   if (!process.env.SLACK_BOT_TOKEN) {
     console.warn(`⚠️  No Slack users file at ${filePath} and no SLACK_BOT_TOKEN — Slack links disabled`);
-    emailToId = new Map();
-    return emailToId;
+    emailToProfile = new Map();
+    return emailToProfile;
   }
 
-  emailToId = await loadFromApi();
-  return emailToId;
+  emailToProfile = await loadFromApi();
+  return emailToProfile;
+}
+
+function getSlackProfile(email) {
+  if (!email) return null;
+  return emailToProfile.get(email.toLowerCase()) || null;
 }
 
 function getSlackId(email) {
-  if (!email) return null;
-  return emailToId.get(email.toLowerCase()) || null;
+  return getSlackProfile(email)?.id || null;
 }
 
-module.exports = { syncSlackUsers, getSlackId };
+module.exports = { syncSlackUsers, getSlackId, getSlackProfile };
